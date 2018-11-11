@@ -1,0 +1,2 @@
+- Text input field.
+- Button for sending search request.
