@@ -1,0 +1,2 @@
+- Hot key (let say F4)
+- 
