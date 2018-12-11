@@ -1,0 +1,28 @@
+.search-wrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+.search-middle{
+    display: flex;
+    flex-direction: row;
+}
+
+.search-column{
+    flex: auto;
+}
+
+.search-left{
+    background-color: aliceblue;
+    text-align: right;
+}
+
+.search-center{
+    background-color: beige;
+    text-align: center;
+}
+
+.search-right{
+    background-color: lavender;
+    text-align: left;
+}
