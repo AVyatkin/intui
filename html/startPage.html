@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>My start page</title>
+    <script src="/assets/libs/jquery-3.3.1.js"></script>
     <script src="/assets/js/startPage.js"></script>
     <link rel="stylesheet" href="/assets/css/start.css">
 </head>
@@ -17,12 +18,17 @@
             </div>
             <div class="search-column search-middle">
                 <div class="search-center">
-                    <input type="text" id="search-text" placeholder="Enter your text">
+                    <input type="text" id="search-text" placeholder="Enter your text" autofocus>
                 </div>
                 <div class="search-bottom__content">Bottom</div>
             </div>
-            <div class="search-column search-right">
-                Right
+            <div class="search-column search-right" >
+                <div id="right-field"></div>
+                <div>
+                    Hot-cut list
+                    <input type="text">
+                    <button>Save</button>
+                </div>
             </div>
         </div>
     </div>
