@@ -39,6 +39,9 @@
 .search-right{
     background-color: lavender;
     text-align: left;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
 }
 
 .search-top__content{
