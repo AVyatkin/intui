@@ -26,14 +26,17 @@ function removeHotCut(key) {
 function searchByKeyPart(keyPart) {
     let result = {};
     let list = getHotCutList();
+    result['partial'] = [];
     for (let key in list) {
         let pos = key.indexOf(keyPart);
 
-        if (key === keyPart)
+        if (key === keyPart){
             result['equal'] = {key:key, value:list[key]};
-
-        else if(pos !== -1)
-            result['partial'] = {key:key, value:list[key]};
+            break;
+        }
+        else if(pos !== -1 && keyPart.length > 0){
+            result['partial'].push({key:key, value:list[key]});
+        }
     }
 
     return result;
