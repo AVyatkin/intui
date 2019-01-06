@@ -5,9 +5,39 @@ $(document).ready(() => {
     let mainInput = $('#' + mainInputId);
     let rightField = $('#' + rightFieldId);
 
-    mainInput.on('keypress keyup change blur', rightField, mainInputChanged);
+    let fields = {
+        right: rightField,
+        left: null,
+        top: null,
+        bottom: null
+    };
+
+    mainInput.on('keypress keyup change blur', fields, mainInputChanged);
 });
 
 function mainInputChanged(event) {
-    event.data.html(event.target.value);
+    let inputText = event.target.value;
+    let rightField = event.data.right;
+
+    rightField.html(getRightList(inputText));
+}
+
+function getRightList(inputText) {
+
+    let searchResult = searchByKeyPart(inputText);
+    let result = JSON.stringify(searchResult);
+
+    return result;
+}
+
+function getLeftList() {
+
+}
+
+function getTopList() {
+
+}
+
+function getBottomList() {
+
 }
