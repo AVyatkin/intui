@@ -1,6 +1,8 @@
 const mainInputId = 'search-text';
 const leftFieldId  = 'left-field';
 const rightFieldId  = 'right-field';
+const updateHotCutInputId = 'update-hot-cut-input';
+const saveButtonId = 'save-button';
 
 const leftCode = 37;
 const upCode = 38;
@@ -13,16 +15,22 @@ $(document).ready(() => {
     let mainInput = $('#' + mainInputId);
     let leftField = $('#' + leftFieldId);
     let rightField = $('#' + rightFieldId);
+    let updateHotCutInput = $('#' + updateHotCutInputId);
+    let saveButton = $('#' + saveButtonId);
 
     let fields = {
+        main: mainInput,
         right: rightField,
         left: null,
         top: null,
-        bottom: null
+        bottom: null,
+        updateField: updateHotCutInput
     };
 
     mainInput.on('keypress keyup change blur', fields, mainInputChanged);
     mainInput.keydown(handleArrows);
+
+    saveButton.on('click', fields, saveHotCut);
 
     mainInput.focus();
 });
@@ -88,4 +96,13 @@ function handleGoButton() {
     $('.go-button').on('click', (event) => {
         document.location.href = event.target.dataset.href;
     });
+}
+
+function saveHotCut(event) {
+
+    let key = event.data.main.val();
+    let value = event.data.updateField.val();
+
+    if(key.toString() !== '' && value.toString() !== '')
+        updateHotCut(key, value);
 }
