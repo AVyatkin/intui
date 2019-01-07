@@ -1,4 +1,5 @@
 const mainInputId = 'search-text';
+const leftFieldId  = 'left-field';
 const rightFieldId  = 'right-field';
 
 const leftCode = 37;
@@ -10,6 +11,7 @@ let equalHref = null;
 
 $(document).ready(() => {
     let mainInput = $('#' + mainInputId);
+    let leftField = $('#' + leftFieldId);
     let rightField = $('#' + rightFieldId);
 
     let fields = {
