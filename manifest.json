@@ -28,7 +28,12 @@
         "default_icon": "assets/img/128.png",
         "default_popup": "html/popup.html"
     },
-    "chrome_url_overrides" : {
-        "newtab": "html/startPage.html"
+    "commands": {
+        "open" : {
+            "suggested_key": {
+                "windows": "Alt+1"
+            },
+            "description": "Open search window"
+        }
     }
 }

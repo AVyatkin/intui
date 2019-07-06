@@ -3,6 +3,8 @@ const leftFieldId  = 'left-field';
 const rightFieldId  = 'right-field';
 const updateHotCutInputId = 'update-hot-cut-input';
 const saveButtonId = 'save-button';
+const hotItemKey = 'hot-item-key';
+const hotItemValue = 'hot-item-value';
 
 const leftCode = 37;
 const upCode = 38;
@@ -33,6 +35,8 @@ $(document).ready(() => {
     saveButton.on('click', fields, saveHotCut);
 
     mainInput.focus();
+
+    updateShowList();
 });
 
 function mainInputChanged(event) {
@@ -89,7 +93,7 @@ function getBottomList() {
 }
 
 function goToHref(href) {
-    document.location.href = href;
+    window.open(href);
 }
 
 function handleGoButton() {
@@ -105,4 +109,15 @@ function saveHotCut(event) {
 
     if(key.toString() !== '' && value.toString() !== '')
         updateHotCut(key, value);
+
+    updateShowList();
+}
+
+function updateShowList() {
+    let leftField = $('#' + leftFieldId);
+    let list = getHotCutList();
+    leftField.html(list);
+    for (let key in list) {
+        leftField.append('<div>'+key+' : '+list[key]+'</div>');
+    }
 }

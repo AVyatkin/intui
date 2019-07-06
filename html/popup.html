@@ -2,12 +2,27 @@
 <html>
 <head>
     <title>My extension</title>
+    <script src="/assets/libs/jquery-3.3.1.js"></script>
     <script src="/assets/js/popup.js"></script>
+    <script src="/assets/js/hotCutList.js"></script>
+    <link rel="stylesheet" href="/assets/css/popup.css">
 </head>
 <body>
-    <div>
-        <div>Popup page</div>
-        <button id="button2">Press</button>
+    <div class="container">
+        <div class="center">
+            <div>
+                <input type="text" id="search-text" placeholder="Enter key" autofocus>
+            </div>
+            <div>
+                <input type="text" placeholder="url" id="update-hot-cut-input">
+                <button id="save-button">Save</button>
+            </div>
+            <div id="search-info"></div>
+        </div>
+        <div class="search-column search-right">
+            <div id="right-field">
+            </div>
+        </div>
     </div>
 </body>
 </html>
