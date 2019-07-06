@@ -13,3 +13,8 @@
 .search-right{
     grid-column: 2/2;grid-row: 1;
 }
+
+#search-info{
+    overflow-y: scroll;
+    height: 200px;
+}

@@ -8,6 +8,7 @@ const saveButtonId = 'save-button';
 const hotItemKey = 'hot-item-key';
 const hotItemValue = 'hot-item-value';
 const searchInfoId = 'search-info';
+const showAllItemsId = 'show-all-items';
 
 const leftCode = 37;
 const upCode = 38;
@@ -21,7 +22,6 @@ $(document).ready(() => {
     let leftField = $('#' + leftFieldId);
     let rightField = $('#' + rightFieldId);
     let updateHotCutInput = $('#' + updateHotCutInputId);
-    let saveButton = $('#' + saveButtonId);
 
     let fields = {
         main: mainInput,
@@ -34,13 +34,16 @@ $(document).ready(() => {
 
     mainInput.on('keypress keyup change blur', fields, mainInputChanged);
     mainInput.keydown(handleArrows);
-    saveButton.on('click', fields, saveHotCut);
-
+    $('#' + saveButtonId).on('click', fields, saveHotCut);
     mainInput.focus();
     updateShowList();
-    $('#test-button').click([document.referrer], (e) => {
-        console.log(e.data);
-        this.showInfo(e.data);
+    $('#' + showAllItemsId).click(() => {
+        let items = getHotCutList();
+        let strings = [];
+        for (let key in items) {
+            strings.push(key + ' => ' + items[key]);
+        }
+        showInfo(strings.join('<br>'));
     });
 });
 
