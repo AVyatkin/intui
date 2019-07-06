@@ -26,7 +26,7 @@ $(document).ready(() => {
         left: null,
         top: null,
         bottom: null,
-        updateField: updateHotCutInput
+        url: updateHotCutInput
     };
 
     mainInput.on('keypress keyup change blur', fields, mainInputChanged);
@@ -105,7 +105,7 @@ function handleGoButton() {
 function saveHotCut(event) {
 
     let key = event.data.main.val();
-    let value = event.data.updateField.val();
+    let value = event.data.url.val();
 
     if(key.toString() !== '' && value.toString() !== '')
         updateHotCut(key, value);

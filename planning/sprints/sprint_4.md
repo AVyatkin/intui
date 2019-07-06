@@ -4,4 +4,4 @@
 3. After adding hot cut - clear input fields. 
 
 #Does
-1.
+3

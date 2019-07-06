@@ -5,8 +5,6 @@ const leftFieldId  = 'left-field';
 const rightFieldId  = 'right-field';
 const updateHotCutInputId = 'update-hot-cut-input';
 const saveButtonId = 'save-button';
-const hotItemKey = 'hot-item-key';
-const hotItemValue = 'hot-item-value';
 const searchInfoId = 'search-info';
 const showAllItemsId = 'show-all-items';
 
@@ -29,22 +27,15 @@ $(document).ready(() => {
         left: null,
         top: null,
         bottom: null,
-        updateField: updateHotCutInput
+        url: updateHotCutInput,
     };
 
     mainInput.on('keypress keyup change blur', fields, mainInputChanged);
     mainInput.keydown(handleArrows);
-    $('#' + saveButtonId).on('click', fields, saveHotCut);
+    $('#' + saveButtonId).click(fields, saveHotCut);
     mainInput.focus();
     updateShowList();
-    $('#' + showAllItemsId).click(() => {
-        let items = getHotCutList();
-        let strings = [];
-        for (let key in items) {
-            strings.push(key + ' => ' + items[key]);
-        }
-        showInfo(strings.join('<br>'));
-    });
+    $('#' + showAllItemsId).click(showAllItems);
 });
 
 function mainInputChanged(event) {
@@ -115,10 +106,11 @@ function handleGoButton() {
 function saveHotCut(event) {
 
     let key = event.data.main.val();
-    let value = event.data.updateField.val();
+    let value = event.data.url.val();
 
     if(key.toString() !== '' && value.toString() !== ''){
         updateHotCut(key, value);
+        clearInputFields(event.data.main, event.data.url);
         showInfo('[' + key + '->' + value + '] Saved')
     }
 
@@ -136,4 +128,18 @@ function updateShowList() {
 
 function showInfo(text) {
     $('#' + searchInfoId).html(text);
+}
+
+function showAllItems() {
+    let items = getHotCutList();
+    let strings = [];
+    for (let key in items) {
+        strings.push(key + ' => ' + items[key]);
+    }
+    showInfo(strings.join('<br>'));
+}
+
+function clearInputFields(key, value) {
+    key.val('');
+    value.val('');
 }
